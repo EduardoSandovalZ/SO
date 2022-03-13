@@ -21,17 +21,17 @@ int main()
     float w_avg = 0, t_avg = 0.0;
     cout << endl
          << "Bienvenido al programa de Shortest Job First" << endl;
-    cout << "Ingrese el total de procesos :";
+    cout << "Ingrese el total de procesos : ";
     cin >> n;
     for (i = 0; i < n; i++)
     {
-        cout << "Ingrese la duracion del proceso " << i + i << ": ";
+        cout << "Ingrese la duracion del proceso " << i + 1 << ": ";
         cin >> p[i].burst;
         p[i].pid = i + 1;
     }
     for (i = 0; i < n; i++)
     {
-        for (j = 0; i < n - i; j++)
+        for (j = 0; j < n - i; j++)
         {
             if (p[j].burst > p[j + 1].burst)
             {
@@ -48,20 +48,20 @@ int main()
         p[i].turnaround = sum;
     }
     pline(35);
-    // cout de lo que se va a imprimir pero por el teclado no puedo poner la barra invertida
+    cout << "PID\tBurst\tWait\tTurnaround";
     pline(35);
     for (i = 0; i < n; i++)
     {
-        // cout de lo que se va a imprimir pero por el teclado no puedo poner la barra invertida
+        cout << p[i].pid << "\t" << p[i].burst << "\t" << p[i].wait << "\t" << p[i].turnaround << endl;
         w_total += p[i].wait;
         t_total += p[i].turnaround;
     }
     w_avg = w_total / (float)n;
     t_avg = t_total / (float)n;
     cout << endl
-         << "Tiempo total de espera" << w_total << endl;
-    cout << "Tiempo promedio de espera" << w_avg << endl;
-    cout << "Tiempo total de respuesta " << t_total << endl;
-    cout << "Tiempo promedio de respuesta" << t_avg << endl;
+         << "Tiempo total de espera: " << w_total << endl;
+    cout << "Tiempo promedio de espera: " << w_avg << endl;
+    cout << "Tiempo total de respuesta: " << t_total << endl;
+    cout << "Tiempo promedio de respuesta: " << t_avg << endl;
     return 0;
 }
